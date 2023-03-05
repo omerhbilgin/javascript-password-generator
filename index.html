@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Password Generator</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div id="container">	
+			<div id="title">
+				Choose the characteristics of your password
+			</div>			
+
+			<div id="div-lowercase">
+				Lowercase characters [a-z]
+				<input id="lowercase-checkbox" type="checkbox" checked/>
+			</div>
+
+			<div id="div-uppercase">
+				Uppercase characters [A-Z]
+				<input id="uppercase-checkbox" type="checkbox" checked/>
+			</div>
+
+			<div id="div-numbers">
+				Digits [0-9]
+				<input id="numbers-checkbox" type="checkbox" checked />
+			</div>
+
+			<div id="div-length">
+				Length of the password
+				<input id="length-input" type="text" placeholder="Length..." autocomplete="off" />	
+			</div>
+			
+			<div>
+				<button id="generate-button" onclick="generatePassword();">Generate random password</button>
+			</div>
+
+			<div id="password">
+
+			</div>
+		</div>
+
+
+
+		<script src="main.js"></script>	
+	</body>
+</html>
