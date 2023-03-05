@@ -1,5 +1,6 @@
 // Model section
 let password;
+const maxPasswordLength = 16384;
 
 
 function getRandomCharFromStr(string) {
@@ -23,7 +24,15 @@ function makeCharset(lowerp, upperp, numberp) {
 
 
 function makePassword(lowerp, upperp, numberp, length) {
-	
+
+	// 16384
+	if (Number(length) > maxPasswordLength) {
+		(() => {
+			setPassword(`-- Password must be at most ${maxPasswordLength} characters --`);
+		})();
+		return;
+	}
+
 	const charset = makeCharset(lowerp, upperp, numberp);
 
 	let word = '';
@@ -54,6 +63,13 @@ function render() {
 	}
 }
 
+function displayLengthWarning() {
+	// Use the password display div for the warning
+	const password = document.querySelector('#password');
+
+	password.innerHTML = `The length of the password must be at most ${maxPasswordLength}`;
+}
+
 
 // Controller section
 function generatePassword(event) {
@@ -70,10 +86,6 @@ function generatePassword(event) {
 	const length = letterInput.value;
 
 	makePassword(isLowercase, isUppercase, isNumbers, length);
-
-	console.log("HERE!");
-	console.log(event);
-	
 
 	render();
 }
